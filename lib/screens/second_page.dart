@@ -10,7 +10,7 @@ class SecondPage extends StatelessWidget {
         title: Text("Second Page"),
       ),
       body: Center(
-        child: Text("Welcome to the Second Page!"),
+        child: Image.asset("assets/images/delivery_boy.png"),
       ),
     );
   }

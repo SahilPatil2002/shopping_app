@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:shopping_app/screens/login_page.dart';
 import 'package:shopping_app/screens/second_page.dart';
+import 'package:shopping_app/screens/sign_in_page.dart';
+import 'package:shopping_app/screens/splash_screen.dart';
 
 void main() {
   runApp( MyApp());
@@ -12,10 +15,10 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        primaryColor: Colors.deepOrange
       ),
       debugShowCheckedModeBanner: false,
-      home:  MyHomePage(),
+      home: SplashScreen(),
     );
   }
 }
@@ -26,15 +29,10 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        title: Text("Flutter Demo"),
-      ),
+      
       body: Container(
         child: Center(
           child: Text("Hello World"),
