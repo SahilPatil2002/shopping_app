@@ -1,10 +1,7 @@
-import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
-import 'package:shopping_app/screens/login_page.dart';
-import 'package:shopping_app/screens/second_page.dart';
-import 'package:shopping_app/screens/sign_in_page.dart';
 import 'package:shopping_app/screens/splash_screen.dart';
 import 'package:shopping_app/widgets/banner_carousel.dart';
+import 'package:shopping_app/widgets/category_scroll_list.dart';
 
 void main() {
   runApp(MyApp());
@@ -34,7 +31,7 @@ class _MyHomePageState extends State<MyHomePage> {
       children: [
         Container(
           decoration: BoxDecoration(
-            color:  Colors.deepOrangeAccent,
+            color: Colors.deepOrangeAccent,
             borderRadius: BorderRadius.circular(12),
           ),
           padding: EdgeInsets.only(bottom: 20, top: 20, left: 28, right: 28),
@@ -97,9 +94,13 @@ class _MyHomePageState extends State<MyHomePage> {
                 ),
               ),
 
-              SizedBox(height: 10),
+              SizedBox(height: 20),
 
               BannerCarousel(),
+
+              SizedBox(height: 20),
+
+              CategoryScrollList(),
 
               SizedBox(height: 10),
               Container(
