@@ -101,8 +101,7 @@ class ProductGridSection extends StatelessWidget {
             SizedBox(height: 10),
             TextButton(
               onPressed: () {
-                Get.to(MyProductPage()
-                );
+                
               },
               child: Text("Check all products"),
             ),
