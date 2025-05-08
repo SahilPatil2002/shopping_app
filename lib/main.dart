@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:shopping_app/screens/splash_screen.dart';
 import 'package:shopping_app/widgets/banner_carousel.dart';
 import 'package:shopping_app/widgets/category_scroll_list.dart';
+import 'package:get/get.dart';
 
 void main() {
   runApp(MyApp());
@@ -21,6 +22,7 @@ class MyApp extends StatelessWidget {
 }
 
 class MyHomePage extends StatefulWidget {
+
   @override
   State<MyHomePage> createState() => _MyHomePageState();
 }
@@ -72,10 +74,10 @@ class _MyHomePageState extends State<MyHomePage> {
                     hintText: 'Search for products',
                     prefixIcon: Icon(Icons.search),
                     border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(12),
+                      borderRadius: BorderRadius.circular(20),
                     ),
                     enabledBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(12),
+                      borderRadius: BorderRadius.circular(20),
                       borderSide: const BorderSide(
                         color: Colors.deepOrange,
                         width: 2,
@@ -103,12 +105,8 @@ class _MyHomePageState extends State<MyHomePage> {
               CategoryScrollList(),
 
               SizedBox(height: 10),
-              Container(
-                height: 300,
-                margin: EdgeInsets.symmetric(horizontal: 16),
-                color: Colors.grey[300],
-                child: Center(child: Text('Future content goes here')),
-              ),
+              
+
               SizedBox(height: 10),
               Container(
                 height: 300,
