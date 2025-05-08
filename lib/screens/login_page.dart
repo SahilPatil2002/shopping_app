@@ -90,24 +90,25 @@ class _LoginPageState extends State<LoginPage> {
                       SizedBox(height: 30),
                       TextField(
                         decoration: InputDecoration(
+                    prefixIcon: Icon(Icons.email, color: Colors.deepOrange),
                           labelText: 'Email Address',
                           labelStyle: TextStyle(color: Colors.black),
                           border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(8),
+                            borderRadius: BorderRadius.circular(15),
                             borderSide: BorderSide(
                               color: Colors.deepOrange,
                               width: 2,
                             ),
                           ),
                           focusedBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(8),
+                            borderRadius: BorderRadius.circular(15),
                             borderSide: BorderSide(
                               color: Colors.deepOrange,
                               width: 2,
                             ),
                           ),
                           enabledBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(8),
+                            borderRadius: BorderRadius.circular(15),
                             borderSide: BorderSide(
                               color: Colors.deepOrange,
                               width: 2,
@@ -119,24 +120,25 @@ class _LoginPageState extends State<LoginPage> {
                       TextField(
                         obscureText: true,
                         decoration: InputDecoration(
+                          prefixIcon: Icon(Icons.lock, color: Colors.deepOrange),
                           labelText: 'Password',
                           labelStyle: TextStyle(color: Colors.black),
                           border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(8),
+                            borderRadius: BorderRadius.circular(15),
                             borderSide: const BorderSide(
                               color: Colors.deepOrange,
                               width: 2,
                             ),
                           ),
                           enabledBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(8),
+                            borderRadius: BorderRadius.circular(15),
                             borderSide: const BorderSide(
                               color: Colors.deepOrange,
                               width: 2,
                             ),
                           ),
                           focusedBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(8),
+                            borderRadius: BorderRadius.circular(15),
                             borderSide: const BorderSide(
                               color: Colors.deepOrange,
                               width: 2,
@@ -147,10 +149,10 @@ class _LoginPageState extends State<LoginPage> {
                       ),
                       const SizedBox(height: 20),
                       SizedBox(
-                        width: double.infinity,
+                        width: 200,
                         child: Container(
                           decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(8),
+                            borderRadius: BorderRadius.circular(25),
                             gradient: const LinearGradient(
                               colors: [
                                 Colors.deepOrange,
@@ -175,7 +177,7 @@ class _LoginPageState extends State<LoginPage> {
                               shadowColor: Colors.transparent,
                               padding: const EdgeInsets.symmetric(vertical: 16),
                               shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(8),
+                                borderRadius: BorderRadius.circular(25),
                               ),
                             ),
                             child: const Text(

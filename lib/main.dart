@@ -1,10 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:shopping_app/models/shopping_controller.dart';
 import 'package:shopping_app/screens/splash_screen.dart';
 import 'package:shopping_app/widgets/banner_carousel.dart';
 import 'package:shopping_app/widgets/category_scroll_list.dart';
 import 'package:get/get.dart';
+import 'package:shopping_app/widgets/product_card.dart';
+import 'package:shopping_app/models/cart_controller.dart';
 
 void main() {
+  Get.put(ShoppingController());
+  Get.put(CartController());
   runApp(MyApp());
 }
 
@@ -22,25 +27,28 @@ class MyApp extends StatelessWidget {
 }
 
 class MyHomePage extends StatefulWidget {
-
   @override
   State<MyHomePage> createState() => _MyHomePageState();
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  Widget _buildTopBox(IconData icon, String label) {
+  final cartController = Get.find<CartController>();
+  Widget _buildTopBox(String imagePath, String label) {
     return Column(
       children: [
         Container(
+          width: 60,
           decoration: BoxDecoration(
-            color: Colors.deepOrangeAccent,
-            borderRadius: BorderRadius.circular(12),
+            color: Colors.blue.shade50,
+            shape: BoxShape.circle,
           ),
-          padding: EdgeInsets.only(bottom: 20, top: 20, left: 28, right: 28),
-          child: Icon(icon, size: 30, color: Colors.white),
+          child: Padding(
+            padding: const EdgeInsets.all(5.0),
+            child: Image.asset(imagePath),
+          ),
         ),
-        SizedBox(height: 5),
-        Text(label, style: TextStyle(fontWeight: FontWeight.bold)),
+        const SizedBox(height: 6),
+        Text(label, style: const TextStyle(fontSize: 12)),
       ],
     );
   }
@@ -55,14 +63,14 @@ class _MyHomePageState extends State<MyHomePage> {
             children: [
               SizedBox(height: 20),
               Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                padding: const EdgeInsets.symmetric(horizontal: 20.0),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    _buildTopBox(Icons.store, 'Shopkart'),
-                    _buildTopBox(Icons.shopping_bag, 'Grocery'),
-                    _buildTopBox(Icons.flight, 'Travel'),
-                    _buildTopBox(Icons.payment, 'Pay'),
+                    _buildTopBox('assets/images/shop.png', 'Shopkart'),
+                    _buildTopBox('assets/images/grocery.png', 'Grocery'),
+                    _buildTopBox('assets/images/travel.png', 'Travel'),
+                    _buildTopBox('assets/images/money.png', 'Pay'),
                   ],
                 ),
               ),
@@ -102,10 +110,72 @@ class _MyHomePageState extends State<MyHomePage> {
 
               SizedBox(height: 20),
 
+              Padding(
+                padding: const EdgeInsets.only(left: 16.0),
+                child: RichText(
+                  overflow: TextOverflow.clip,
+                  textAlign: TextAlign.end,
+                  textDirection: TextDirection.rtl,
+                  softWrap: true,
+                  textScaler: TextScaler.linear(1),
+                  maxLines: 1,
+                  text: TextSpan(
+                    text: 'Top ',
+                    style: TextStyle(
+                      fontSize: 24,
+                      color: Colors.black,
+                      fontWeight: FontWeight.bold,
+                    ),
+                    children: <TextSpan>[
+                      TextSpan(
+                        text: 'Categories',
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          color: Colors.deepOrange,
+                          fontSize: 24,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                // child: Text("Top Categories", style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),),
+              ),
+              SizedBox(height: 20),
+
               CategoryScrollList(),
 
               SizedBox(height: 10),
-              
+              Padding(
+                padding: const EdgeInsets.only(left: 16.0),
+                child: RichText(
+                  overflow: TextOverflow.clip,
+                  textAlign: TextAlign.end,
+                  textDirection: TextDirection.rtl,
+                  softWrap: true,
+                  textScaler: TextScaler.linear(1),
+                  maxLines: 1,
+                  text: TextSpan(
+                    text: 'Latest ',
+                    style: TextStyle(
+                      fontSize: 24,
+                      color: Colors.black,
+                      fontWeight: FontWeight.bold,
+                    ),
+                    children: <TextSpan>[
+                      TextSpan(
+                        text: 'Products',
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          color: Colors.deepOrange,
+                          fontSize: 24,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+
+              ProductGridSection(),
 
               SizedBox(height: 10),
               Container(
@@ -118,6 +188,34 @@ class _MyHomePageState extends State<MyHomePage> {
           ),
         ),
       ),
+      bottomNavigationBar: Obx(() {
+        return Container(
+          padding: EdgeInsets.symmetric(horizontal: 20, vertical: 12),
+          decoration: BoxDecoration(
+            color: Colors.white,
+            boxShadow: [BoxShadow(color: Colors.black12, blurRadius: 5)],
+          ),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Row(
+                children: [
+                  Icon(Icons.shopping_cart, color: Colors.deepOrange),
+                  SizedBox(width: 8),
+                  Text(
+                    "Items: ${cartController.count}",
+                    style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                  ),
+                ],
+              ),
+              Text(
+                "Total: \$${cartController.totalPrice.toStringAsFixed(2)}",
+                style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+              ),
+            ],
+          ),
+        );
+      }),
     );
   }
 }

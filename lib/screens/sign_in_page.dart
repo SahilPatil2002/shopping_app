@@ -94,18 +94,19 @@ class _SignInPageState extends State<SignInPage> {
                 SizedBox(height: 30),
                 TextField(
                   decoration: InputDecoration(
+                    prefixIcon: Icon(Icons.email, color: Colors.deepOrange),
                     labelText: 'Email Address',
                     labelStyle: TextStyle(color: Colors.black),
                     border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(8),
+                      borderRadius: BorderRadius.circular(15),
                       borderSide: BorderSide(color: Colors.deepOrange, width: 2),
                     ),
                     focusedBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(8),
+                      borderRadius: BorderRadius.circular(15),
                       borderSide: BorderSide(color: Colors.deepOrange, width: 2),
                     ),
                     enabledBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(8),
+                      borderRadius: BorderRadius.circular(15),
                       borderSide: BorderSide(color: Colors.deepOrange, width: 2),
                     ),
                   ),
@@ -113,18 +114,19 @@ class _SignInPageState extends State<SignInPage> {
                 SizedBox(height: 20),
                 TextField(
                   decoration: InputDecoration(
+                    prefixIcon: Icon(Icons.person, color: Colors.deepOrange),
                     labelText: 'Your Name',
                     labelStyle: TextStyle(color: Colors.black),
                     border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(8),
+                      borderRadius: BorderRadius.circular(15),
                       borderSide: BorderSide(color: Colors.deepOrange, width: 2),
                     ),
                     focusedBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(8),
+                      borderRadius: BorderRadius.circular(15),
                       borderSide: BorderSide(color: Colors.deepOrange, width: 2),
                     ),
                     enabledBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(8),
+                      borderRadius: BorderRadius.circular(15),
                       borderSide: BorderSide(color: Colors.deepOrange, width: 2),
                     ),
                   ),
@@ -133,18 +135,19 @@ class _SignInPageState extends State<SignInPage> {
                 TextField(
                   obscureText: true,
                   decoration: InputDecoration(
+                    prefixIcon: Icon(Icons.lock, color: Colors.deepOrange),
                     labelText: 'Password',
                     labelStyle: TextStyle(color: Colors.black),
                     border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(8),
+                      borderRadius: BorderRadius.circular(15),
                       borderSide: BorderSide(color: Colors.deepOrange, width: 2),
                     ),
                     focusedBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(8),
+                      borderRadius: BorderRadius.circular(15),
                       borderSide: BorderSide(color: Colors.deepOrange, width: 2),
                     ),
                     enabledBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(8),
+                      borderRadius: BorderRadius.circular(15),
                       borderSide: BorderSide(color: Colors.deepOrange, width: 2),
                     ),
                     suffixIcon: Icon(Icons.check_circle, color: Colors.green),
@@ -152,10 +155,10 @@ class _SignInPageState extends State<SignInPage> {
                 ),
                 SizedBox(height: 20),
                 SizedBox(
-                  width: double.infinity,
+                  width: 200,
                   child: Container(
                     decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(8),
+                      borderRadius: BorderRadius.circular(25),
                       gradient: LinearGradient(
                         colors: [
                           Colors.deepOrange,
@@ -177,7 +180,7 @@ class _SignInPageState extends State<SignInPage> {
                         shadowColor: Colors.transparent,
                         padding: EdgeInsets.symmetric(vertical: 16),
                         shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(8),
+                          borderRadius: BorderRadius.circular(25),
                         ),
                       ),
                       child: Text(
