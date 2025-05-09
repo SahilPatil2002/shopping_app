@@ -13,9 +13,10 @@ class ShoppingController extends GetxController {
 
   void fetchProducts() async {
     try {
-      var response = await Dio().get('https://fakestoreapi.com/products?limit=12');
+      var response = await Dio().get('https://fakestoreapi.com/products');
       var data = response.data as List;
       products.value = data.map((e) => Product.fromJson(e)).toList();
+      print("Fetched ${products.length} products");
     } catch (e) {
       print("Error fetching products: $e");
     }

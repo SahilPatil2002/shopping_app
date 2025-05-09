@@ -22,7 +22,10 @@ class ProductGridSection extends StatelessWidget {
             GridView.builder(
               physics: NeverScrollableScrollPhysics(),
               shrinkWrap: true,
-              itemCount: controller.products.length,
+              itemCount:
+                  controller.products.length > 12
+                      ? 12
+                      : controller.products.length,
               gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                 crossAxisCount: 2,
                 mainAxisSpacing: 12,
@@ -84,7 +87,6 @@ class ProductGridSection extends StatelessWidget {
                           child: ElevatedButton(
                             onPressed: () {
                               cartController.addToCart(product);
-                              
                             },
                             child: Text(
                               'Add to Cart',
@@ -101,7 +103,7 @@ class ProductGridSection extends StatelessWidget {
             SizedBox(height: 10),
             TextButton(
               onPressed: () {
-                
+                Get.to(MyProductPage());
               },
               child: Text("Check all products"),
             ),
