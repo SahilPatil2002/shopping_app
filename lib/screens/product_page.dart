@@ -9,6 +9,12 @@ class MyProductPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        automaticallyImplyLeading: false,
+        backgroundColor: Colors.deepOrange,
+        title: const Text('Latest Products', style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),),
+        centerTitle: true,
+      ),
       body: Obx(() {
         if (controller.products.isEmpty) {
           return Center(child: CircularProgressIndicator());

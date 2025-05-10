@@ -207,8 +207,8 @@ class _SignInPageState extends State<SignInPage> {
                   children: [
                     OutlinedButton.icon(
                       onPressed: () {},
-                      icon: Icon(Icons.g_mobiledata, size: 35),
-                      label: Text('Google'),
+                      icon: Icon(Icons.g_mobiledata, size: 35,color: Colors.deepOrange,),
+                      label: Text('Google', style: TextStyle(color: Colors.deepOrange),),
                     ),
                     OutlinedButton.icon(
                       onPressed: () {},

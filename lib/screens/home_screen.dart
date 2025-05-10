@@ -157,13 +157,13 @@ class _MyHomeScreenState extends State<MyHomeScreen> {
 
               ProductGridSection(),
 
-              SizedBox(height: 10),
-              Container(
-                height: 300,
-                margin: EdgeInsets.symmetric(horizontal: 16),
-                color: Colors.grey[300],
-                child: Center(child: Text('Future content goes here')),
-              ),
+              // SizedBox(height: 10),
+              // Container(
+              //   height: 300,
+              //   margin: EdgeInsets.symmetric(horizontal: 16),
+              //   color: Colors.grey[300],
+              //   child: Center(child: Text('Future content goes here')),
+              // ),
             ],
           ),
         ),

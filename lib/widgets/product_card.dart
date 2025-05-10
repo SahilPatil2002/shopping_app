@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:shopping_app/models/cart_controller.dart';
+import 'package:shopping_app/models/navigation_controller.dart';
 import 'package:shopping_app/models/shopping_controller.dart';
-import 'package:shopping_app/screens/product_page.dart';
 
 class ProductGridSection extends StatelessWidget {
   final controller = Get.find<ShoppingController>();
@@ -103,9 +103,15 @@ class ProductGridSection extends StatelessWidget {
             SizedBox(height: 10),
             TextButton(
               onPressed: () {
-                Get.to(MyProductPage());
+                Get.find<NavigationController>().changeTab(1);
               },
-              child: Text("Check all products"),
+              child: Text(
+                "Check all products",
+                style: TextStyle(
+                  color: Colors.deepOrange,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
             ),
           ],
         ),
