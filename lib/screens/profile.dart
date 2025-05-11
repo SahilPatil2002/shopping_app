@@ -53,6 +53,15 @@ class MyProfilePage extends StatelessWidget {
             leading: const Icon(Icons.favorite,color: Colors.deepOrange,),
             title: const Text("Wishlist"),
             trailing: const Icon(Icons.arrow_forward_ios, size: 16,color: Colors.deepOrange),
+            onTap: () {
+              Get.find<NavigationController>().changeTab(1);
+
+            },
+          ),
+          ListTile(
+            leading: const Icon(Icons.smartphone,color: Colors.deepOrange,),
+            title: const Text("Instagram Profile"),
+            trailing: const Icon(Icons.arrow_forward_ios, size: 16,color: Colors.deepOrange),
             onTap: () {},
           ),
           const Spacer(),
@@ -63,7 +72,7 @@ class MyProfilePage extends StatelessWidget {
                 // You can add logout logic here
               },
               icon: const Icon(Icons.logout, color: Colors.white,),
-              label: const Text("Logout", style: TextStyle(color: Colors.white),),
+              label: const Text("Logout", style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold ),),
               style: ElevatedButton.styleFrom(
                 backgroundColor: Colors.deepOrange,
                 minimumSize: const Size.fromHeight(50),

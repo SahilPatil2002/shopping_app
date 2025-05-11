@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:shopping_app/models/product.dart';
@@ -46,30 +48,42 @@ class CartController extends GetxController {
 
   // Save the total price and item count to shared preferences
   Future<void> saveCartData() async {
-    final prefs = await SharedPreferences.getInstance();
-    prefs.setDouble('totalPrice', totalPrice.value); // Save the updated total
-    prefs.setInt('itemCount', count); // Save the updated count
-  }
+  final prefs = await SharedPreferences.getInstance();
+
+  List<Map<String, dynamic>> cartList = cartItems.map((item) => {
+    'id': item.id,
+    'title': item.title,
+    'description': item.description,
+    'image': item.image,
+    'price': item.price,
+    'rating': item.rating,
+  }).toList();
+
+  prefs.setString('cartItems', jsonEncode(cartList));
+  prefs.setDouble('totalPrice', totalPrice.value);
+}
+
 
   // Load saved cart data from shared preferences
   Future<void> loadCartData() async {
-    final prefs = await SharedPreferences.getInstance();
-    double? savedTotal = prefs.getDouble('totalPrice');
-    int? savedCount = prefs.getInt('itemCount');
+  final prefs = await SharedPreferences.getInstance();
+  final String? cartJson = prefs.getString('cartItems');
+  final double? savedTotal = prefs.getDouble('totalPrice');
 
-    if (savedTotal != null && savedCount != null) {
-      // Simulate items in cart (just placeholders, not actual products)
-      for (int i = 0; i < savedCount; i++) {
-        cartItems.add(Product(
-          id: i,
-          title: 'Saved Item',
-          description: '',
-          image: '',
-          price: savedTotal / savedCount, // Distribute saved total among items
-          rating: 0,
-        ));
-      }
-      totalPrice.value = savedTotal; // Load saved total price
-    }
+  if (cartJson != null) {
+    final List<dynamic> decodedList = jsonDecode(cartJson);
+
+    cartItems.value = decodedList.map((item) => Product(
+      id: item['id'],
+      title: item['title'],
+      description: item['description'],
+      image: item['image'],
+      price: item['price'],
+      rating: item['rating'],
+    )).toList();
+
+    totalPrice.value = savedTotal ?? 0.0;
   }
+}
+
 }

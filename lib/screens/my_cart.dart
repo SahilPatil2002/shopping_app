@@ -59,7 +59,7 @@ class MyCart extends StatelessWidget {
                 height: 60,
               ),
               title: Text(item.title),
-              subtitle: Text('\$${item.price.toStringAsFixed(2)}'),
+              subtitle: Text('\₹${item.price.toStringAsFixed(2)}'),
               trailing: IconButton(
                 icon: Icon(Icons.delete, color: Colors.red),
                 onPressed: () {
@@ -90,7 +90,7 @@ class MyCart extends StatelessWidget {
                 children: [
                   const Text("Original Total:", style: TextStyle(fontSize: 16)),
                   Text(
-                    "\$${originalTotal.toStringAsFixed(2)}",
+                    "\₹${originalTotal.toStringAsFixed(2)}",
                     style: const TextStyle(
                       fontSize: 16,
                       decoration: TextDecoration.lineThrough,
@@ -105,7 +105,7 @@ class MyCart extends StatelessWidget {
                 children: [
                   const Text("Discount (10%):", style: TextStyle(fontSize: 16)),
                   Text(
-                    "-\$${discount.toStringAsFixed(2)}",
+                    "-\₹${discount.toStringAsFixed(2)}",
                     style: const TextStyle(fontSize: 16, color: Colors.green),
                   ),
                 ],
@@ -119,7 +119,7 @@ class MyCart extends StatelessWidget {
                     style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                   ),
                   Text(
-                    "\$${discountedTotal.toStringAsFixed(2)}",
+                    "\₹${discountedTotal.toStringAsFixed(2)}",
                     style: const TextStyle(
                       fontSize: 18,
                       fontWeight: FontWeight.bold,

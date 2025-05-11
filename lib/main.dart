@@ -92,7 +92,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     ],
                   ),
                   Text(
-                    "Total: \$${cartController.totalPrice.toStringAsFixed(2)}",
+                    "Total: \₹${cartController.totalPrice.toStringAsFixed(2)}",
                     style: const TextStyle(
                       fontSize: 16,
                       fontWeight: FontWeight.bold,

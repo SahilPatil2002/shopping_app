@@ -26,4 +26,17 @@ class Product {
       rating: ratingData != null ? (ratingData['rate'] ?? 0).toDouble() : 0.0,
     );
   }
+
+  
+
+  Map<String, dynamic> toJson() {
+    return {
+      'id': id,
+      'title': title,
+      'description': description,
+      'image': image,
+      'price': price,
+      'rating': rating,
+    };
+  }
 }
