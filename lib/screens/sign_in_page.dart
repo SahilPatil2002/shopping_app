@@ -11,6 +11,8 @@ class _SignInPageState extends State<SignInPage> {
   final TextEditingController emailController = TextEditingController();
   final TextEditingController nameController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
+  bool obscurePassword = true;
+
 
   @override
   Widget build(BuildContext context) {
@@ -67,7 +69,9 @@ class _SignInPageState extends State<SignInPage> {
                   padding: const EdgeInsets.all(20),
                   decoration: const BoxDecoration(
                     color: Colors.white,
-                    borderRadius: BorderRadius.vertical(top: Radius.circular(30)),
+                    borderRadius: BorderRadius.vertical(
+                      top: Radius.circular(30),
+                    ),
                   ),
                   child: SingleChildScrollView(
                     child: Form(
@@ -77,7 +81,10 @@ class _SignInPageState extends State<SignInPage> {
                         children: [
                           const Text(
                             'Get started free.',
-                            style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+                            style: TextStyle(
+                              fontSize: 24,
+                              fontWeight: FontWeight.bold,
+                            ),
                           ),
                           const SizedBox(height: 10),
                           const Text(
@@ -90,7 +97,10 @@ class _SignInPageState extends State<SignInPage> {
                           TextFormField(
                             controller: emailController,
                             keyboardType: TextInputType.emailAddress,
-                            decoration: _inputDecoration('Email Address', Icons.email),
+                            decoration: _inputDecoration(
+                              'Email Address',
+                              Icons.email,
+                            ),
                             validator: (value) {
                               if (value == null || value.isEmpty) {
                                 return 'Please enter your email';
@@ -105,7 +115,10 @@ class _SignInPageState extends State<SignInPage> {
                           // Name Field
                           TextFormField(
                             controller: nameController,
-                            decoration: _inputDecoration('Your Name', Icons.person),
+                            decoration: _inputDecoration(
+                              'Your Name',
+                              Icons.person,
+                            ),
                             validator: (value) {
                               if (value == null || value.trim().isEmpty) {
                                 return 'Please enter your name';
@@ -117,16 +130,31 @@ class _SignInPageState extends State<SignInPage> {
 
                           // Password Field
                           TextFormField(
-                            controller: passwordController,
-                            obscureText: true,
-                            decoration: _inputDecoration('Password', Icons.lock),
-                            validator: (value) {
-                              if (value == null || value.length < 6) {
-                                return 'Password must be at least 6 characters';
-                              }
-                              return null;
-                            },
-                          ),
+  controller: passwordController,
+  obscureText: obscurePassword,
+  decoration: _inputDecoration('Password', Icons.lock).copyWith(
+    suffixIcon: IconButton(
+      icon: Icon(
+        obscurePassword ? Icons.visibility_off : Icons.visibility,
+        color: Colors.grey,
+      ),
+      onPressed: () {
+        setState(() {
+          obscurePassword = !obscurePassword;
+        });
+      },
+    ),
+  ),
+  validator: (value) {
+    if (value == null || value.isEmpty) {
+      return 'Please enter your password';
+    } else if (value.length < 6) {
+      return 'Password must be at least 6 characters';
+    }
+    return null;
+  },
+),
+
                           const SizedBox(height: 30),
 
                           // Sign Up Button
@@ -136,7 +164,10 @@ class _SignInPageState extends State<SignInPage> {
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(25),
                                 gradient: const LinearGradient(
-                                  colors: [Colors.deepOrange, Color.fromARGB(255, 255, 165, 137)],
+                                  colors: [
+                                    Colors.deepOrange,
+                                    Color.fromARGB(255, 255, 165, 137),
+                                  ],
                                   begin: Alignment.centerLeft,
                                   end: Alignment.centerRight,
                                 ),
@@ -146,7 +177,9 @@ class _SignInPageState extends State<SignInPage> {
                                   if (_formKey.currentState!.validate()) {
                                     Navigator.pushReplacement(
                                       context,
-                                      MaterialPageRoute(builder: (context) => LoginPage()),
+                                      MaterialPageRoute(
+                                        builder: (context) => LoginPage(),
+                                      ),
                                     );
                                   }
                                 },
@@ -154,7 +187,9 @@ class _SignInPageState extends State<SignInPage> {
                                   elevation: 0,
                                   backgroundColor: Colors.transparent,
                                   shadowColor: Colors.transparent,
-                                  padding: const EdgeInsets.symmetric(vertical: 16),
+                                  padding: const EdgeInsets.symmetric(
+                                    vertical: 16,
+                                  ),
                                   shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(25),
                                   ),
@@ -194,8 +229,15 @@ class _SignInPageState extends State<SignInPage> {
                                   side: BorderSide(color: Colors.deepOrange),
                                 ),
                                 onPressed: () {},
-                                icon: Icon(Icons.g_mobiledata, size: 35, color: Colors.deepOrange),
-                                label: Text('Google', style: TextStyle(color: Colors.deepOrange)),
+                                icon: Icon(
+                                  Icons.g_mobiledata,
+                                  size: 35,
+                                  color: Colors.deepOrange,
+                                ),
+                                label: Text(
+                                  'Google',
+                                  style: TextStyle(color: Colors.deepOrange),
+                                ),
                               ),
                               OutlinedButton.icon(
                                 onPressed: () {},

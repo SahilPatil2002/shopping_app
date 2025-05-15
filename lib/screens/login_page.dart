@@ -11,6 +11,7 @@ class _LoginPageState extends State<LoginPage> {
   final _formKey = GlobalKey<FormState>();
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
+  bool obscurePassword = true;
 
   @override
   Widget build(BuildContext context) {
@@ -67,7 +68,9 @@ class _LoginPageState extends State<LoginPage> {
                   padding: const EdgeInsets.all(20),
                   decoration: const BoxDecoration(
                     color: Colors.white,
-                    borderRadius: BorderRadius.vertical(top: Radius.circular(30)),
+                    borderRadius: BorderRadius.vertical(
+                      top: Radius.circular(30),
+                    ),
                   ),
                   child: SingleChildScrollView(
                     child: Form(
@@ -77,7 +80,10 @@ class _LoginPageState extends State<LoginPage> {
                         children: [
                           const Text(
                             'Welcome Back',
-                            style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+                            style: TextStyle(
+                              fontSize: 24,
+                              fontWeight: FontWeight.bold,
+                            ),
                           ),
                           const SizedBox(height: 10),
                           const Text(
@@ -89,7 +95,10 @@ class _LoginPageState extends State<LoginPage> {
                           TextFormField(
                             controller: emailController,
                             keyboardType: TextInputType.emailAddress,
-                            decoration: _inputDecoration('Email Address', Icons.email),
+                            decoration: _inputDecoration(
+                              'Email Address',
+                              Icons.email,
+                            ),
                             validator: (value) {
                               if (value == null || value.isEmpty) {
                                 return 'Please enter your email';
@@ -103,9 +112,24 @@ class _LoginPageState extends State<LoginPage> {
 
                           TextFormField(
                             controller: passwordController,
-                            obscureText: true,
-                            decoration: _inputDecoration('Password', Icons.lock).copyWith(
-                              suffixIcon: const Icon(Icons.visibility_off),
+                            obscureText: obscurePassword,
+                            decoration: _inputDecoration(
+                              'Password',
+                              Icons.lock,
+                            ).copyWith(
+                              suffixIcon: IconButton(
+                                icon: Icon(
+                                  obscurePassword
+                                      ? Icons.visibility_off
+                                      : Icons.visibility,
+                                  color: Colors.grey,
+                                ),
+                                onPressed: () {
+                                  setState(() {
+                                    obscurePassword = !obscurePassword;
+                                  });
+                                },
+                              ),
                             ),
                             validator: (value) {
                               if (value == null || value.isEmpty) {
@@ -116,6 +140,7 @@ class _LoginPageState extends State<LoginPage> {
                               return null;
                             },
                           ),
+
                           const SizedBox(height: 30),
 
                           // Login Button
@@ -125,7 +150,10 @@ class _LoginPageState extends State<LoginPage> {
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(25),
                                 gradient: const LinearGradient(
-                                  colors: [Colors.deepOrange, Color.fromARGB(255, 255, 165, 137)],
+                                  colors: [
+                                    Colors.deepOrange,
+                                    Color.fromARGB(255, 255, 165, 137),
+                                  ],
                                   begin: Alignment.centerLeft,
                                   end: Alignment.centerRight,
                                 ),
@@ -135,7 +163,9 @@ class _LoginPageState extends State<LoginPage> {
                                   if (_formKey.currentState!.validate()) {
                                     Navigator.pushReplacement(
                                       context,
-                                      MaterialPageRoute(builder: (context) => MyHomePage()),
+                                      MaterialPageRoute(
+                                        builder: (context) => MyHomePage(),
+                                      ),
                                     );
                                   }
                                 },
@@ -143,7 +173,9 @@ class _LoginPageState extends State<LoginPage> {
                                   elevation: 0,
                                   backgroundColor: Colors.transparent,
                                   shadowColor: Colors.transparent,
-                                  padding: const EdgeInsets.symmetric(vertical: 16),
+                                  padding: const EdgeInsets.symmetric(
+                                    vertical: 16,
+                                  ),
                                   shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(25),
                                   ),
@@ -165,20 +197,32 @@ class _LoginPageState extends State<LoginPage> {
                           // Forgot Password
                           TextButton(
                             onPressed: () {},
-                            child: const Text('Forgot your password?', style: TextStyle(color: Colors.black)),
+                            child: const Text(
+                              'Forgot your password?',
+                              style: TextStyle(color: Colors.black),
+                            ),
                           ),
 
                           // Go to Sign Up
                           TextButton(
                             onPressed: () {
-                              Navigator.push(context, MaterialPageRoute(builder: (_) => SignInPage()));
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(builder: (_) => SignInPage()),
+                              );
                             },
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: const [
-                                Text('Don’t have an account?', style: TextStyle(color: Colors.black)),
+                                Text(
+                                  'Don’t have an account?',
+                                  style: TextStyle(color: Colors.black),
+                                ),
                                 SizedBox(width: 5),
-                                Text('Create one', style: TextStyle(color: Colors.deepOrange)),
+                                Text(
+                                  'Create one',
+                                  style: TextStyle(color: Colors.deepOrange),
+                                ),
                               ],
                             ),
                           ),
@@ -205,11 +249,20 @@ class _LoginPageState extends State<LoginPage> {
                             children: [
                               OutlinedButton.icon(
                                 style: OutlinedButton.styleFrom(
-                                  side: const BorderSide(color: Colors.deepOrange),
+                                  side: const BorderSide(
+                                    color: Colors.deepOrange,
+                                  ),
                                 ),
                                 onPressed: () {},
-                                icon: const Icon(Icons.g_mobiledata, size: 35, color: Colors.deepOrange),
-                                label: const Text('Google', style: TextStyle(color: Colors.deepOrange)),
+                                icon: const Icon(
+                                  Icons.g_mobiledata,
+                                  size: 35,
+                                  color: Colors.deepOrange,
+                                ),
+                                label: const Text(
+                                  'Google',
+                                  style: TextStyle(color: Colors.deepOrange),
+                                ),
                               ),
                               OutlinedButton.icon(
                                 onPressed: () {},
