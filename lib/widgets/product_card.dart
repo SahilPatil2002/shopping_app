@@ -13,7 +13,9 @@ class ProductGridSection extends StatelessWidget {
   Widget build(BuildContext context) {
     return Obx(() {
       if (controller.products.isEmpty) {
-        return Center(child: CircularProgressIndicator());
+        return Center(child: CircularProgressIndicator(
+          color: Colors.deepOrange,
+        ));
       }
 
       return Padding(
